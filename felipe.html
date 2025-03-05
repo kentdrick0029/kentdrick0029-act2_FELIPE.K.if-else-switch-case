@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Evaluator</title>
+</head>
+<body>
+    <h1>Student Grade Evaluator</h1>
+    <label for="score">Enter Student's Score:</label>
+    <input type="number" id="score" min="0" max="100">
+    <button onclick="evaluateGrade()">Evaluate</button>
+
+    <h2>Result:</h2>
+    <p id="result"></p>
+
+    <script>
+        function evaluateGrade() {
+            const score = parseInt(document.getElementById('score').value);
+
+            if (isNaN(score)) {
+                document.getElementById('result').innerText = "Please enter a valid score.";
+                return;
+            }
+
+            let result = "";
+
+            if (score >= 75) {
+                result += "You Passed. ";
+            } else {
+                result += "You Failed. ";
+            }
+
+            switch (true) {
+                case (score >= 90 && score <= 100):
+                    result += "Letter Grade: 90-100";
+                    break;
+                case (score >= 80 && score <= 89):
+                    result += "Letter Grade: 80-89";
+                    break;
+                case (score >= 75 && score <= 79):
+                    result += "Letter Grade: 75-79";
+                    break;
+                default:
+                    result += "Letter Grade: Below 75";
+                    break;
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
